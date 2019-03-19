@@ -2,7 +2,7 @@ FROM debian:stable-slim
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update -qy && \
+RUN apt-get update && \
     apt-get install -qqy --no-install-recommends sudo \
     ca-certificates \
     procps \
