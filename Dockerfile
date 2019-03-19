@@ -22,7 +22,7 @@ RUN apt-get update && \
     useradd -d /home/dev -m -g dev dev && \
     curl -fSL -o /tmp/codeblocks.tar.xz https://ufpr.dl.sourceforge.net/project/codeblocks/Binaries/17.12/Linux/Debian%20stable/codeblocks_17.12-1_amd64_stable.tar.xz && \
     tar -xf /tmp/codeblocks.tar.xz -C /tmp && \
-    dpkg -i /tmp/*.deb && \
+    dpkg --force-all -i /tmp/*.deb && \
     apt-get install -f -qy && \
     apt-get clean && \
     rm -rf /tmp/* && \
