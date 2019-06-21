@@ -1,4 +1,6 @@
 ![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)
+[![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/dobolinux/codeblocks.svg)](https://hub.docker.com/r/dobolinux/codeblocks)
+[![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/dobolinux/codeblocks.svg)](https://hub.docker.com/r/dobolinux/codeblocks/builds)
 
 # Code::Blocks IDE
 
