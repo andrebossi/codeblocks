@@ -33,7 +33,7 @@ jobs:
       - name: set release date
         run: |
           echo "RELEASE_DATE=$(date --rfc-3339=date)" >> ${GITHUB_ENV}
-          echo "IMAGE_VERSION=$(curl --silent http://www.codeblocks.org/downloads/binaries/ | egrep -i "codeblocks_(2[0-9]\.[0-9]+)_amd64_stable.tar.xz" -o | head -n1)" >> ${GITHUB_ENV}
+          echo "IMAGE_VERSION=$(curl --silent http://www.codeblocks.org/downloads/binaries/ | egrep -i "codeblocks_(2[0-9]\.[0-9]+)_amd64_stable.tar.xz" -o | head -n1 | egrep -o '(2[0-9]\.[0-9]+)')" >> ${GITHUB_ENV}
 
       -
         name: Docker meta
