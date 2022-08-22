@@ -1,6 +1,8 @@
 name: push image
 
 on:
+  schedule:
+    - cron: '0 0 * * 1'
   push:
     tags:
       - '*'
