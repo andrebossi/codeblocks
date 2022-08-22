@@ -1,4 +1,10 @@
-FROM debian:stable-slim
+FROM debian:10-slim
+
+ARG VERSION_CODEBLOCKS \
+    BUILD_DATE
+
+LABEL org.label.build-date=$BUILD_DATE \
+    org.label.version_codeblocks=$VERSION_CODEBLOCKS
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -7,7 +13,6 @@ RUN apt-get update && \
     ca-certificates \
     procps \
     curl \
-    tar \
     xz-utils \
     gdb \
     build-essential \
@@ -20,9 +25,10 @@ RUN apt-get update && \
     echo "dev ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/sudoers.d/dev && \
     addgroup dev && \
     useradd -d /home/dev -m -g dev dev && \
-    curl -fSL -o /tmp/codeblocks.tar.xz https://ufpr.dl.sourceforge.net/project/codeblocks/Binaries/17.12/Linux/Debian%20stable/codeblocks_17.12-1_amd64_stable.tar.xz && \
-    tar -xf /tmp/codeblocks.tar.xz -C /tmp && \
-    dpkg --force-all -i /tmp/*.deb && \
+    curl -fSL -o /tmp/codeblocks.tar.xz "https://ufpr.dl.sourceforge.net/project/codeblocks/Binaries/$VERSION_CODEBLOCKS/Linux/Debian%2010/codeblocks_${VERSION_CODEBLOCKS}_amd64_stable.tar.xz" && \
+    mkdir /tmp/codeblocks  && \
+    tar -xf /tmp/codeblocks.tar.xz -C /tmp/codeblocks && \
+    dpkg --force-all -i /tmp/codeblocks/*.deb && \
     apt-get install -f -qy && \
     apt-get clean && \
     rm -rf /tmp/* && \
